@@ -1,41 +1,52 @@
-<form (ngSubmit)="onSubmit(createGroupForm)" #createGroupForm="ngForm">
-    <div class="form-group">
-        <label for="group-name">Group Name:</label>
-        <input 
-            type="text"
-            name="groupName"
-            placeholder="Group Name..."
-            ngModel
-            required
-            class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="groupImage">Group Image:</label>
-        <input 
-            type="file"
-            ngModel
-            required
-            name="group-image"
-            (change)="onPreview($event)"
-            class="form-control">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-success btn-lg" type="submit" [disabled]="createGroupForm.invalid || savingStatus">Save Group</button>
-    </div>
-    <div class="loadingio-spinner-spinner-b3x4rh2wf6f" *ngIf="savingStatus">
-        <div class="ldio-ymue26u69p">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+<div class="row">
+  <div class="col-md-6 col-md-push-3">
+    <form (ngSubmit)="onSubmit(createGroupForm)" #createGroupForm="ngForm">
+        <div class="form-group">
+            <label for="group-name">Group Name:</label>
+            <input
+                type="text"
+                name="groupName"
+                placeholder="Group Name..."
+                ngModel
+                required
+                class="form-control">
         </div>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="groupImage">Group Image:</label>
+            <input
+                type="file"
+                ngModel
+                required
+                name="group-image"
+                (change)="onPreview($event)"
+                class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="groupImage">Group Section:</label>
+          <select class="form-control" name="section" ngModel required>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-lg" type="submit" [disabled]="createGroupForm.invalid || savingStatus">Save Group</button>
+        </div>
+        <div class="loadingio-spinner-spinner-b3x4rh2wf6f" *ngIf="savingStatus">
+            <div class="ldio-ymue26u69p">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </form>
+  </div>
+</div>

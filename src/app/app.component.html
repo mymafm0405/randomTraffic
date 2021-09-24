@@ -4,10 +4,8 @@
       <app-navigation></app-navigation>
     </div>
   </div>
-  <div class="row" *ngIf="showCreateGroupForm">
-    <div class="col-xs-4" style="color: yellow;">
+  <div *ngIf="showCreateGroupForm" style="color: yellow; margin-top: 30px;">
       <app-group-create></app-group-create>
-    </div>
   </div>
   <div class="row">
     <div class="col-xs-12">

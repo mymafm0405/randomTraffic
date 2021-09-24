@@ -18,23 +18,26 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
     // Get groups
     this.http.get('https://random-select.firebaseio.com/groups.json')
-    .pipe(map(
-      (resGroups) => {
-        const groupsArray = [];
-        for (const key in resGroups) {
-          if (resGroups.hasOwnProperty(key)) {
-            groupsArray.push(resGroups[key]);
+      .pipe(map(
+        (resGroups) => {
+          const groupsArray = [];
+          for (const key in resGroups) {
+            if (resGroups.hasOwnProperty(key)) {
+              groupsArray.push(resGroups[key]);
+            }
           }
+          return groupsArray;
         }
-        return groupsArray;
-      }
-    ))
-    .subscribe(
-      (groupsData: Group[]) => {
-        this.groupService.groups = groupsData;
-        this.groups = groupsData;
-      }
-    );
+      ))
+      .subscribe(
+        (groupsData: Group[]) => {
+          this.groupService.groups = groupsData;
+          this.groups = groupsData;
+        }
+      );
+
+
+
     // Get students data
     this.getStudentsData();
     //
@@ -57,25 +60,25 @@ export class GroupsComponent implements OnInit {
   getStudentsData() {
     // Get students
     this.http.get('https://random-select.firebaseio.com/students.json')
-    .pipe(map(
-      (resStudents) => {
-        const studentsArray = [];
-        const studentsArrayWithFireId = [];
-        for (const key in resStudents) {
-          if (resStudents.hasOwnProperty(key)) {
-            studentsArrayWithFireId.push({...resStudents[key], fireId: key});
-            studentsArray.push(resStudents[key]);
+      .pipe(map(
+        (resStudents) => {
+          const studentsArray = [];
+          const studentsArrayWithFireId = [];
+          for (const key in resStudents) {
+            if (resStudents.hasOwnProperty(key)) {
+              studentsArrayWithFireId.push({ ...resStudents[key], fireId: key });
+              studentsArray.push(resStudents[key]);
+            }
           }
+          this.studentService.studentsArrayWithFireId = studentsArrayWithFireId;
+          return studentsArray;
         }
-        this.studentService.studentsArrayWithFireId = studentsArrayWithFireId;
-        return studentsArray;
-      }
-    ))
-    .subscribe(
-      (studentsData: Student[]) => {
-        this.studentService.students = studentsData;
-      }
-    );
+      ))
+      .subscribe(
+        (studentsData: Student[]) => {
+          this.studentService.students = studentsData;
+        }
+      );
     //
   }
 

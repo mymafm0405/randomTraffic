@@ -17,6 +17,9 @@ export class GroupServiceService {
   groupIndex: number;
   groups: Group[] = [];
   groupId: number;
+  section1Clicked = new Subject<boolean>();
+  section2Clicked = new Subject<boolean>();
+  showAllClicked = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
 

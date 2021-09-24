@@ -18,4 +18,16 @@ export class NavigationComponent implements OnInit {
     this.groupService.createGroupClicked.next(this.currentCreateGroupStatus);
   }
 
+  showAll() {
+    this.groupService.showAllClicked.next(true);
+  }
+
+  showSecrion1() {
+    this.groupService.section1Clicked.next(true);
+  }
+
+  showSecrion2() {
+    this.groupService.section2Clicked.next(true);
+  }
+
 }

@@ -44,7 +44,8 @@ export class GroupCreateComponent implements OnInit {
                   const newGroup: Group = {
                     id: groupId,
                     name: createGroupForm.value.groupName,
-                    imageUrl: url
+                    imageUrl: url,
+                    section: createGroupForm.value.section
                   };
                   this.groupService.addGroup(newGroup);
                 }

@@ -18,6 +18,7 @@ export class GroupIconComponent implements OnInit {
   timeOut: any;
   editClickedStatus = false;
   choosedStudentsArray: Student[] = [];
+  currentSection: number;
 
   constructor(private groupService: GroupServiceService, private studentService: StudentServiceService) { }
 
@@ -29,7 +30,28 @@ export class GroupIconComponent implements OnInit {
         this.groups = updatedGroups;
       }
     );
-    //
+    // Show only one section of the two sections
+    this.groupService.section1Clicked.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.currentSection = 1;
+        }
+      }
+    )
+    this.groupService.section2Clicked.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.currentSection = 2;
+        }
+      }
+    )
+    this.groupService.showAllClicked.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.currentSection = null;
+        }
+      }
+    )
   }
 
   onAddStudent(groupId: number, groupIndex: number) {

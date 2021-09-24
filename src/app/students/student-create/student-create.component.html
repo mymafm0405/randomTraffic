@@ -1,0 +1,32 @@
+<form (ngSubmit)="onSubmit(studentAddForm)" #studentAddForm="ngForm">
+    <div class="form-group">
+        <label for="name">Student Name:</label>
+        <input type="text" name="studentName" required ngModel class="form-control" placeholder="Student Name...">
+    </div>
+    <div class="form-group">
+        <label for="name">Student Photo:</label>
+        <input type="file" name="studentImage" required ngModel class="form-control" (change)="onPreview($event)">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-default" type="submit" [disabled]="studentAddForm.invalid || savingStatus">Save student</button>
+    </div>
+    <div class="loadingio-spinner-spinner-b3x4rh2wf6f" *ngIf="savingStatus">
+        <div class="ldio-ymue26u69p">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="alert alert-success" *ngIf="addedSuccess">
+        <h4>Student added successfully!</h4>
+    </div>
+</form>

@@ -66,12 +66,17 @@ export class GroupIconComponent implements OnInit {
   }
 
   onRandom(groupId: number, groupIndex: number) {
+    if (this.currentSection === 2) {
+      this.randomClicked = false;
+    }
     clearTimeout(this.timeOut);
     this.currentIndex = groupIndex;
     this.randomClicked = true;
-    this.timeOut = setTimeout(() => {
-      this.randomClicked = false;
-    }, 10000);
+    if (this.currentSection !== 2) {
+      this.timeOut = setTimeout(() => {
+        this.randomClicked = false;
+      }, 10000);
+    }
     //
     let currentGroupStudents = this.studentService.students.filter(student => student.groupId === groupId);
     if (this.choosedStudentsArray.length > 0) {

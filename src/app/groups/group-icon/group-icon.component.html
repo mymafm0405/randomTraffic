@@ -1,6 +1,6 @@
 <div class="col-xs-4 text-center" *ngFor="let group of groups; let i = index" style="margin-bottom: 30px;">
   <div *ngIf="+group.section === currentSection">
-    <h4 style="color: yellow;">{{ group.name }}</h4>
+    <h1 style="color: yellow;">{{ group.name }}</h1>
       <img *ngIf="!randomClicked || i !== currentIndex" [src]="group.imageUrl" (click)="onRandom(group.id, i)"
           class="img-thumbnail img-responsive" style="cursor: pointer;">
       <app-student-selected *ngIf="randomClicked && i === currentIndex"></app-student-selected>
@@ -15,7 +15,7 @@
       </div>
   </div>
   <div *ngIf="!currentSection">
-    <h4 style="color: yellow;">{{ group.name }}</h4>
+    <h1 style="color: yellow;">{{ group.name }}</h1>
       <img *ngIf="!randomClicked || i !== currentIndex" [src]="group.imageUrl" (click)="onRandom(group.id, i)"
           class="img-thumbnail img-responsive" style="cursor: pointer;">
       <app-student-selected *ngIf="randomClicked && i === currentIndex"></app-student-selected>

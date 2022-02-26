@@ -1,12 +1,12 @@
-import { GroupServiceService } from './../../shared/group-service.service';
-import { StudentServiceService } from './../../shared/student-service.service';
-import { Component, OnInit } from '@angular/core';
-import { Student } from 'src/app/shared/student.model';
+import { GroupServiceService } from "./../../shared/group-service.service";
+import { StudentServiceService } from "./../../shared/student-service.service";
+import { Component, OnInit } from "@angular/core";
+import { Student } from "src/app/shared/student.model";
 
 @Component({
-  selector: 'app-student-selected',
-  templateUrl: './student-selected.component.html',
-  styleUrls: ['./student-selected.component.css']
+  selector: "app-student-selected",
+  templateUrl: "./student-selected.component.html",
+  styleUrls: ["./student-selected.component.css"],
 })
 export class StudentSelectedComponent implements OnInit {
   showRandomWheel = true;
@@ -20,7 +20,10 @@ export class StudentSelectedComponent implements OnInit {
   currentGroupStudents: Student[];
   // image: any;
 
-  constructor(private studentService: StudentServiceService, private groupService: GroupServiceService) { }
+  constructor(
+    private studentService: StudentServiceService,
+    private groupService: GroupServiceService
+  ) {}
 
   ngOnInit() {
     //
@@ -43,7 +46,7 @@ export class StudentSelectedComponent implements OnInit {
     //
     this.selectedStudent = this.studentService.selectedStudent;
     //
-    this.randomSound.src = '../../../assets/sounds/prizeWheel.mp3';
+    this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
     this.randomSound.play();
     //
     this.photoRandom(this.groupIndex);
@@ -56,26 +59,24 @@ export class StudentSelectedComponent implements OnInit {
       // clearInterval(this.startPhotoRandom2);
     }, 4000);
     //
-    this.groupService.randomClicked.subscribe(
-      (randomStatus: boolean) => {
-        //
-        this.photoRandom(this.groupIndex);
-        // this.photoRandom2();
-        //
-        this.showRandomWheel = randomStatus;
-        this.showWinnerStudent = !randomStatus;
-        //
-        this.randomSound.src = '../../../assets/sounds/prizeWheel.mp3';
-        this.randomSound.play();
-        //
-        setTimeout(() => {
-          this.showRandomWheel = false;
-          this.showWinnerStudent = true;
-          clearInterval(this.startPhotoRandom);
-          // clearInterval(this.startPhotoRandom2);
-        }, 4000);
-      }
-    );
+    this.groupService.randomClicked.subscribe((randomStatus: boolean) => {
+      //
+      this.photoRandom(this.groupIndex);
+      // this.photoRandom2();
+      //
+      this.showRandomWheel = randomStatus;
+      this.showWinnerStudent = !randomStatus;
+      //
+      this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+      this.randomSound.play();
+      //
+      setTimeout(() => {
+        this.showRandomWheel = false;
+        this.showWinnerStudent = true;
+        clearInterval(this.startPhotoRandom);
+        // clearInterval(this.startPhotoRandom2);
+      }, 4000);
+    });
     //
     this.studentService.selectedStudentChanged.subscribe(
       (updatedStudent: Student) => {
@@ -87,7 +88,7 @@ export class StudentSelectedComponent implements OnInit {
   photoRandom(groupIndex: number) {
     this.startPhotoRandom = setInterval(() => {
       if (groupIndex !== undefined) {
-        this.photoSrc = '/assets/images/students/' + groupIndex + '/group.gif';
+        this.photoSrc = "/assets/images/students/" + groupIndex + "/group.gif";
       }
     }, 100);
   }

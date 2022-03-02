@@ -1,0 +1,17 @@
+.flower-bg {
+  background-image: url("../../../assets/images/red-1.png");
+  width: 255px;
+  height: 485px;
+  background-size: contain;
+}
+.random-position {
+  position: absolute;
+  top: 135px;
+  left: 175px;
+  height: 150px;
+  width: 150px;
+}
+.img-thumbnail {
+  background: none;
+  border: 0;
+}

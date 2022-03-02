@@ -3,6 +3,7 @@
   width: 255px;
   height: 485px;
   background-size: contain;
+  margin-left: 115px;
 }
 .random-position {
   position: absolute;

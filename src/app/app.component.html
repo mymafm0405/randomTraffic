@@ -1,11 +1,18 @@
-<div class="container-fluid" style="background-image: url(../../../assets/images/background.jpg); min-height: 900px;">
+<div
+  class="container-fluid"
+  style="
+    background-image: url(../../../assets/images/bg.jpeg);
+    min-height: 900px;
+    background-size: contain;
+  "
+>
   <div class="row">
     <div class="col-xs-12">
       <app-navigation></app-navigation>
     </div>
   </div>
-  <div *ngIf="showCreateGroupForm" style="color: yellow; margin-top: 30px;">
-      <app-group-create></app-group-create>
+  <div *ngIf="showCreateGroupForm" style="color: yellow; margin-top: 30px">
+    <app-group-create></app-group-create>
   </div>
   <div class="row">
     <div class="col-xs-12">

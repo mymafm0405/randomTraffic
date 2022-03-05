@@ -3,8 +3,8 @@
   *ngFor="let group of groups; let i = index"
   style="margin-bottom: 30px"
 >
-  <div *ngIf="+group.section === currentSection">
-    <h1 style="color: yellow">{{ group.name }}</h1>
+  <div *ngIf="+group.section === currentSection && i > 5">
+    <h1 style="color: black">{{ group.name }}</h1>
     <img
       *ngIf="!randomClicked || i !== currentIndex"
       [src]="group.imageUrl"
@@ -42,8 +42,8 @@
       <app-student-create></app-student-create>
     </div>
   </div>
-  <div *ngIf="!currentSection">
-    <h1 style="color: yellow">{{ group.name }}</h1>
+  <div *ngIf="!currentSection && i > 5">
+    <h1 style="color: black">{{ group.name }}</h1>
     <img
       *ngIf="!randomClicked || i !== currentIndex"
       [src]="group.imageUrl"

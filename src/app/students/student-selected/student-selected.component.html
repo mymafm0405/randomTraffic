@@ -1,4 +1,10 @@
-<div class="flower-bg">
+<div
+  class="flower-bg"
+  [ngStyle]="{
+    'background-image':
+      'url(../../../../../assets/images/' + groupIndex + '.png)'
+  }"
+>
   <img
     *ngIf="showRandomWheel"
     [src]="photoSrc"

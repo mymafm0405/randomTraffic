@@ -16,6 +16,7 @@ export class StudentSelectedComponent implements OnInit {
   startPhotoRandom: any;
   // startPhotoRandom2: any;
   photoSrc: string;
+  flowerBg: string;
   groupIndex: number;
   currentGroupStudents: Student[];
   // image: any;
@@ -91,5 +92,7 @@ export class StudentSelectedComponent implements OnInit {
         this.photoSrc = "/assets/images/students/" + groupIndex + "/group.gif";
       }
     }, 100);
+    this.flowerBg = "assets/images/" + groupIndex + ".png";
+    console.log(this.flowerBg);
   }
 }

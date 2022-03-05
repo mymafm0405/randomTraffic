@@ -1,10 +1,7 @@
 <div
   class="container-fluid"
-  style="
-    background-image: url(../../../assets/images/bg2.jpg);
-    min-height: 900px;
-    background-size: contain;
-  "
+  style="min-height: 900px; background-size: contain"
+  [ngClass]="section1 ? 'flower' : 'traffic'"
 >
   <div class="row">
     <div class="col-xs-12">

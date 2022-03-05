@@ -1,16 +1,18 @@
-import { GroupServiceService } from './shared/group-service.service';
-import { Component, OnInit } from '@angular/core';
+import { GroupServiceService } from "./shared/group-service.service";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = 'random-select';
+  title = "random-select";
   showCreateGroupForm = false;
   randomClicked: boolean;
   editClicked: boolean;
+  section1 = true;
+  section2 = false;
   constructor(private groupService: GroupServiceService) {}
 
   ngOnInit() {
@@ -22,19 +24,26 @@ export class AppComponent implements OnInit {
     );
     //
     //
-    this.groupService.editClicked.subscribe(
-      (editClickedStatus: boolean) => {
-        this.editClicked = editClickedStatus;
+    this.groupService.editClicked.subscribe((editClickedStatus: boolean) => {
+      this.editClicked = editClickedStatus;
+    });
+    //
+    //
+    this.groupService.randomClicked.subscribe((randomStatus: boolean) => {
+      this.randomClicked = randomStatus;
+    });
+    //
+    this.groupService.section1Clicked.subscribe((status: boolean) => {
+      if (status) {
+        this.section1 = true;
+        this.section2 = false;
       }
-    );
-    //
-    //
-    this.groupService.randomClicked.subscribe(
-      (randomStatus: boolean) => {
-        this.randomClicked = randomStatus;
+    });
+    this.groupService.section2Clicked.subscribe((status: boolean) => {
+      if (status) {
+        this.section2 = true;
+        this.section1 = false;
       }
-    );
-    //
+    });
   }
-
 }

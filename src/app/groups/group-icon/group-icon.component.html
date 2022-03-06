@@ -9,9 +9,20 @@
       *ngIf="!randomClicked || i !== currentIndex"
       [src]="group.imageUrl"
       (click)="onRandom(group.id, i)"
-      class="img-thumbnail img-responsive"
-      style="cursor: pointer; height: 350px"
+      style="cursor: pointer"
+      [ngClass]="
+        i > 8
+          ? 'img-thumbnail img-responsive img-size-small'
+          : 'img-thumbnail img-responsive img-size-big'
+      "
     />
+    <!-- <img
+      *ngIf="!randomClicked || i !== currentIndex"
+      [src]="group.imageUrl"
+      (click)="onRandom(group.id, i)"
+      class="img-thumbnail img-responsive"
+      style="cursor: pointer; height: 500px"
+    /> -->
     <app-student-selected
       *ngIf="randomClicked && i === currentIndex"
     ></app-student-selected>

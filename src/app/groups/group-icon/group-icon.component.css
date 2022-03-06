@@ -2,3 +2,9 @@
   background: none;
   border: 0;
 }
+.img-size-small {
+  height: 350px;
+}
+.img-size-big {
+  height: 500px;
+}

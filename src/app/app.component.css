@@ -1,6 +1,8 @@
 .flower {
   background-image: url("../assets/images/bg2.jpg");
+  background-size: contain;
 }
 .traffic {
-  background-image: url("../assets/images/traffic4.png");
+  background-image: url("../assets/images/traffic8.png");
+  background-size: contain;
 }

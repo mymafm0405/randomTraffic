@@ -8,7 +8,11 @@
   <img
     *ngIf="showRandomWheel"
     [src]="photoSrc"
-    class="img-circle random-position"
+    [ngClass]="
+      groupIndex > 8
+        ? 'img-circle traffic-random'
+        : 'img-circle random-position'
+    "
   />
 </div>
 <h3 *ngIf="showRandomWheel" style="color: yellow">Loading...</h3>
@@ -23,7 +27,11 @@
     [src]="selectedStudent.imageUrl"
     height="430px"
     width="400px"
-    class="random-position img-circle"
+    [ngClass]="
+      groupIndex > 8
+        ? 'img-circle traffic-random answer'
+        : 'random-position img-circle'
+    "
   />
   <h2
     style="

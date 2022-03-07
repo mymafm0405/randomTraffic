@@ -11,6 +11,15 @@
   height: 150px;
   width: 150px;
 }
+.traffic-random {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.answer {
+  position: absolute;
+  left: 50px;
+}
 .img-thumbnail {
   background: none;
   border: 0;

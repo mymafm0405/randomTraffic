@@ -1,13 +1,13 @@
-import { StudentServiceService } from './../../shared/student-service.service';
-import { GroupServiceService } from './../../shared/group-service.service';
-import { Group } from './../../shared/group.model';
-import { Component, OnInit, Input } from '@angular/core';
-import { Student } from 'src/app/shared/student.model';
+import { StudentServiceService } from "./../../shared/student-service.service";
+import { GroupServiceService } from "./../../shared/group-service.service";
+import { Group } from "./../../shared/group.model";
+import { Component, OnInit, Input } from "@angular/core";
+import { Student } from "src/app/shared/student.model";
 
 @Component({
-  selector: 'app-group-icon',
-  templateUrl: './group-icon.component.html',
-  styleUrls: ['./group-icon.component.css']
+  selector: "app-group-icon",
+  templateUrl: "./group-icon.component.html",
+  styleUrls: ["./group-icon.component.css"],
 })
 export class GroupIconComponent implements OnInit {
   groups: Group[];
@@ -18,40 +18,35 @@ export class GroupIconComponent implements OnInit {
   timeOut: any;
   editClickedStatus = false;
   choosedStudentsArray: Student[] = [];
-  currentSection: number;
+  currentSection = 1;
 
-  constructor(private groupService: GroupServiceService, private studentService: StudentServiceService) { }
+  constructor(
+    private groupService: GroupServiceService,
+    private studentService: StudentServiceService
+  ) {}
 
   ngOnInit() {
     this.groups = this.groupService.groups;
     //
-    this.groupService.groupsChanged.subscribe(
-      (updatedGroups: Group[]) => {
-        this.groups = updatedGroups;
-      }
-    );
+    this.groupService.groupsChanged.subscribe((updatedGroups: Group[]) => {
+      this.groups = updatedGroups;
+    });
     // Show only one section of the two sections
-    this.groupService.section1Clicked.subscribe(
-      (status: boolean) => {
-        if (status) {
-          this.currentSection = 1;
-        }
+    this.groupService.section1Clicked.subscribe((status: boolean) => {
+      if (status) {
+        this.currentSection = 1;
       }
-    )
-    this.groupService.section2Clicked.subscribe(
-      (status: boolean) => {
-        if (status) {
-          this.currentSection = 2;
-        }
+    });
+    this.groupService.section2Clicked.subscribe((status: boolean) => {
+      if (status) {
+        this.currentSection = 2;
       }
-    )
-    this.groupService.showAllClicked.subscribe(
-      (status: boolean) => {
-        if (status) {
-          this.currentSection = null;
-        }
+    });
+    this.groupService.showAllClicked.subscribe((status: boolean) => {
+      if (status) {
+        this.currentSection = null;
       }
-    )
+    });
   }
 
   onAddStudent(groupId: number, groupIndex: number) {
@@ -78,16 +73,22 @@ export class GroupIconComponent implements OnInit {
       }, 10000);
     }
     //
-    let currentGroupStudents = this.studentService.students.filter(student => student.groupId === groupId);
+    let currentGroupStudents = this.studentService.students.filter(
+      (student) => student.groupId === groupId
+    );
     if (this.choosedStudentsArray.length > 0) {
       for (const stu of this.choosedStudentsArray) {
-        currentGroupStudents = currentGroupStudents.filter(st => st.id !== stu.id);
+        currentGroupStudents = currentGroupStudents.filter(
+          (st) => st.id !== stu.id
+        );
         console.log(currentGroupStudents);
       }
     }
     console.log(currentGroupStudents);
     if (currentGroupStudents.length <= 1) {
-      currentGroupStudents = this.studentService.students.filter(student => student.groupId === groupId);
+      currentGroupStudents = this.studentService.students.filter(
+        (student) => student.groupId === groupId
+      );
       this.choosedStudentsArray = [];
     }
     this.studentService.currentGroupStudents = currentGroupStudents;

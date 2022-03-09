@@ -10,7 +10,7 @@
     [src]="photoSrc"
     [ngClass]="
       groupIndex > 8
-        ? 'img-circle traffic-random'
+        ? 'img-circle traff more-left-margin'
         : 'img-circle random-position'
     "
   />
@@ -29,11 +29,12 @@
     width="400px"
     [ngClass]="
       groupIndex > 8
-        ? 'img-circle traffic-random answer'
+        ? 'img-circle traff more-left-margin'
         : 'random-position img-circle'
     "
   />
   <h2
+    *ngIf="groupIndex < 8"
     style="
       color: white;
       padding: 10px;

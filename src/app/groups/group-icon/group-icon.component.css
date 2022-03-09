@@ -3,7 +3,8 @@
   border: 0;
 }
 .img-size-small {
-  height: 350px;
+  height: 300px;
+  margin-top: -70px;
 }
 .img-size-big {
   height: 500px;

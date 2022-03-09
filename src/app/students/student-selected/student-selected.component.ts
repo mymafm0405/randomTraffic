@@ -1,6 +1,6 @@
 import { GroupServiceService } from "./../../shared/group-service.service";
 import { StudentServiceService } from "./../../shared/student-service.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Student } from "src/app/shared/student.model";
 
 @Component({
@@ -8,7 +8,7 @@ import { Student } from "src/app/shared/student.model";
   templateUrl: "./student-selected.component.html",
   styleUrls: ["./student-selected.component.css"],
 })
-export class StudentSelectedComponent implements OnInit {
+export class StudentSelectedComponent implements OnInit, OnDestroy {
   showRandomWheel = true;
   showWinnerStudent = false;
   selectedStudent: Student;
@@ -47,8 +47,16 @@ export class StudentSelectedComponent implements OnInit {
     //
     this.selectedStudent = this.studentService.selectedStudent;
     //
-    this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
-    this.randomSound.play();
+    if (this.groupIndex > 8) {
+      this.randomSound.src = "../../../assets/sounds/roll.mp3";
+      this.randomSound.play();
+      setTimeout(() => {
+        this.randomSound.pause();
+      }, 6000);
+    } else {
+      this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+      this.randomSound.play();
+    }
     //
     this.photoRandom(this.groupIndex);
     // this.photoRandom2();
@@ -68,8 +76,16 @@ export class StudentSelectedComponent implements OnInit {
       this.showRandomWheel = randomStatus;
       this.showWinnerStudent = !randomStatus;
       //
-      this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
-      this.randomSound.play();
+      if (this.groupIndex > 8) {
+        this.randomSound.src = "../../../assets/sounds/roll.mp3";
+        this.randomSound.play();
+        setTimeout(() => {
+          this.randomSound.pause();
+        }, 6000);
+      } else {
+        this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+        this.randomSound.play();
+      }
       //
       setTimeout(() => {
         this.showRandomWheel = false;
@@ -94,5 +110,9 @@ export class StudentSelectedComponent implements OnInit {
     }, 100);
     this.flowerBg = "assets/images/" + groupIndex + ".png";
     console.log(this.flowerBg);
+  }
+
+  ngOnDestroy(): void {
+    this.showRandomWheel = false;
   }
 }

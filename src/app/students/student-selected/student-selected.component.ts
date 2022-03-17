@@ -48,13 +48,15 @@ export class StudentSelectedComponent implements OnInit, OnDestroy {
     this.selectedStudent = this.studentService.selectedStudent;
     //
     if (this.groupIndex > 8) {
-      this.randomSound.src = "../../../assets/sounds/roll.mp3";
+      // this.randomSound.src = "../../../assets/sounds/roll.mp3";
+      this.randomSound.src = "../../../assets/sounds/newRandom.mpeg";
       this.randomSound.play();
       setTimeout(() => {
         this.randomSound.pause();
-      }, 6000);
+      }, 2000);
     } else {
-      this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+      // this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+      this.randomSound.src = "../../../assets/sounds/newRandom.mpeg";
       this.randomSound.play();
     }
     //
@@ -66,7 +68,7 @@ export class StudentSelectedComponent implements OnInit, OnDestroy {
       this.showWinnerStudent = true;
       clearInterval(this.startPhotoRandom);
       // clearInterval(this.startPhotoRandom2);
-    }, 4000);
+    }, 2000);
     //
     this.groupService.randomClicked.subscribe((randomStatus: boolean) => {
       //
@@ -77,13 +79,13 @@ export class StudentSelectedComponent implements OnInit, OnDestroy {
       this.showWinnerStudent = !randomStatus;
       //
       if (this.groupIndex > 8) {
-        this.randomSound.src = "../../../assets/sounds/roll.mp3";
+        this.randomSound.src = "../../../assets/sounds/newRandom.mpeg";
         this.randomSound.play();
         setTimeout(() => {
           this.randomSound.pause();
-        }, 6000);
+        }, 2000);
       } else {
-        this.randomSound.src = "../../../assets/sounds/prizeWheel.mp3";
+        this.randomSound.src = "../../../assets/sounds/newRandom.mpeg";
         this.randomSound.play();
       }
       //
@@ -92,7 +94,7 @@ export class StudentSelectedComponent implements OnInit, OnDestroy {
         this.showWinnerStudent = true;
         clearInterval(this.startPhotoRandom);
         // clearInterval(this.startPhotoRandom2);
-      }, 4000);
+      }, 2000);
     });
     //
     this.studentService.selectedStudentChanged.subscribe(

@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "random-select"
-  }
+    "default": "randomtraffic",
+    "new": "randomtraffic"
+  },
+  "targets": {}
 }

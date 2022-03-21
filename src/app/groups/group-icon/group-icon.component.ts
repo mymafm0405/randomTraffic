@@ -18,7 +18,7 @@ export class GroupIconComponent implements OnInit {
   timeOut: any;
   editClickedStatus = false;
   choosedStudentsArray: Student[] = [];
-  currentSection = 1;
+  currentSection = 2;
 
   constructor(
     private groupService: GroupServiceService,

@@ -3,7 +3,7 @@
   *ngFor="let group of groups; let i = index"
   style="margin-bottom: 30px"
 >
-  <div *ngIf="+group.section === currentSection && i > 5">
+  <div *ngIf="+group.section === currentSection">
     <h1 style="color: black">{{ group.name }}</h1>
     <img
       *ngIf="!randomClicked || i !== currentIndex"
@@ -11,7 +11,7 @@
       (click)="onRandom(group.id, i)"
       style="cursor: pointer"
       [ngClass]="
-        i > 8
+        i > 0
           ? 'img-thumbnail img-responsive img-size-small'
           : 'img-thumbnail img-responsive img-size-big'
       "

@@ -1,10 +1,10 @@
-import { Group } from './group.model';
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Group } from "./group.model";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class GroupServiceService {
   createGroupClicked = new Subject<boolean>();
@@ -21,19 +21,20 @@ export class GroupServiceService {
   section2Clicked = new Subject<boolean>();
   showAllClicked = new Subject<boolean>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addGroup(group: Group) {
-
-    this.http.post('https://random-select.firebaseio.com/groups.json', group)
-      .subscribe(
-        () => {
-          this.groups.push(group);
-          this.groups = this.groups.slice();
-          this.groupsChanged.next(this.groups);
-          this.groupAddedChanged.next(true);
-          console.log('Group has been added successfully!');
-        }
-      );
+    this.http
+      .post(
+        "https://randomtraffic-default-rtdb.firebaseio.com/groups.json",
+        group
+      )
+      .subscribe(() => {
+        this.groups.push(group);
+        this.groups = this.groups.slice();
+        this.groupsChanged.next(this.groups);
+        this.groupAddedChanged.next(true);
+        console.log("Group has been added successfully!");
+      });
   }
 }

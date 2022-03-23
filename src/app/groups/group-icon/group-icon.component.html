@@ -10,11 +10,7 @@
       [src]="group.imageUrl"
       (click)="onRandom(group.id, i)"
       style="cursor: pointer"
-      [ngClass]="
-        i > 0
-          ? 'img-thumbnail img-responsive img-size-small'
-          : 'img-thumbnail img-responsive img-size-big'
-      "
+      class="img-thumbnail img-responsive img-size-small"
     />
     <!-- <img
       *ngIf="!randomClicked || i !== currentIndex"
